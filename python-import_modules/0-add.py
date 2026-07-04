@@ -1,0 +1,7 @@
+#!/usr/bin/python3
+"""Program that imports add from add_0 and prints the result."""
+from add_0 import add
+
+a = 1
+b = 2
+print("{} + {} = {}".format(a, b, add(a, b)))
