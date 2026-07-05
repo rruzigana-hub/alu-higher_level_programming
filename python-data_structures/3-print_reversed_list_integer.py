@@ -4,5 +4,7 @@
 
 def print_reversed_list_integer(my_list=[]):
     """Print each integer in my_list in reverse, one per line."""
+    if my_list is None:
+        return
     for i in my_list[::-1]:
         print("{:d}".format(i))
