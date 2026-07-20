@@ -102,3 +102,18 @@ class Rectangle:
             TypeError: if rect_1 or rect_2 is not a Rectangle instance.
         """
         if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_1.area() >= rect_2.area():
+            return rect_1
+        return rect_2
+
+    @classmethod
+    def square(cls, size=0):
+        """Return a new Rectangle instance with width == height == size.
+
+        Args:
+            size: the width and height of the new square (default 0).
+        """
+        return cls(size, size)
