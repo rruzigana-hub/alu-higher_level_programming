@@ -28,3 +28,19 @@ The original list is unchanged::
 
     >>> print(my_list)
     [1, 4, 2, 3, 5]
+
+Print sorted with negative numbers::
+
+    >>> my_list_2 = MyList()
+    >>> my_list_2.append(3)
+    >>> my_list_2.append(-1)
+    >>> my_list_2.append(0)
+    >>> my_list_2.append(-5)
+    >>> my_list_2.print_sorted()
+    [-5, -1, 0, 3]
+
+Print sorted with an empty list::
+
+    >>> empty_list = MyList()
+    >>> empty_list.print_sorted()
+    []
