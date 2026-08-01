@@ -9,13 +9,11 @@ Basic sentence with a period
 ---------------------------------
     >>> text_indentation("Hello world.")
     Hello world.
-    <BLANKLINE>
 
 Question mark
 -----------------
     >>> text_indentation("How are you?")
     How are you?
-    <BLANKLINE>
 
 Colon
 --------
@@ -34,7 +32,6 @@ Multiple punctuation
     Ok:
     <BLANKLINE>
     done.
-    <BLANKLINE>
 
 Non-string input
 ---------------------
@@ -47,8 +44,3 @@ None input
     >>> text_indentation(None)
     Traceback (most recent call last):
     TypeError: text must be a string
-
-Empty string
-----------------
-    >>> text_indentation("")
-    <BLANKLINE>

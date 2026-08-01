@@ -23,15 +23,15 @@ def matrix_divided(matrix, div):
             size, or div is not a number.
         ZeroDivisionError: if div is 0.
     """
-    if (not isinstance(matrix, list) or len(matrix) == 0 or
-            not all(isinstance(row, list) for row in matrix)):
-        raise TypeError("matrix must be a matrix (list of lists) of "
-                         "integers/floats")
+    err_matrix = "matrix must be a matrix (list of lists) of integers/floats"
+    if not isinstance(matrix, list) or len(matrix) == 0:
+        raise TypeError(err_matrix)
     for row in matrix:
+        if not isinstance(row, list):
+            raise TypeError(err_matrix)
         for item in row:
             if type(item) not in (int, float):
-                raise TypeError("matrix must be a matrix (list of "
-                                 "lists) of integers/floats")
+                raise TypeError(err_matrix)
     if len(set(len(row) for row in matrix)) != 1:
         raise TypeError("Each row of the matrix must have the same size")
     if type(div) not in (int, float):

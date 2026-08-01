@@ -51,3 +51,15 @@ Both invalid
     >>> add_integer("a", "b")
     Traceback (most recent call last):
     TypeError: a must be an integer
+
+Float overflow (infinity)
+------------------------------
+    >>> add_integer(float('inf'), 2)
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+Float NaN
+-------------
+    >>> add_integer(float('nan'), 2)
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer

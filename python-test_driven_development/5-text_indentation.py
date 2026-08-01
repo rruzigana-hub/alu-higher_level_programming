@@ -7,7 +7,6 @@ Example:
     Hello.
     <BLANKLINE>
     World.
-    <BLANKLINE>
 """
 
 
@@ -35,4 +34,4 @@ def text_indentation(text):
                 i += 1
             continue
         i += 1
-    print(result.strip())
+    print(result.strip(), end="")
