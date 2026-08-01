@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Defines the Base class, the base of all other classes in this project."""
 import json
+import csv
 
 
 class Base:
@@ -77,6 +78,45 @@ class Base:
         try:
             with open(filename, "r") as jsonfile:
                 list_dicts = cls.from_json_string(jsonfile.read())
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Write the CSV representation of list_objs to a file.
+
+        Args:
+            list_objs (list): A list of instances that inherit from Base.
+        """
+        filename = cls.__name__ + ".csv"
+        if list_objs is None:
+            list_objs = []
+        if cls.__name__ == "Rectangle":
+            fields = ["id", "width", "height", "x", "y"]
+        else:
+            fields = ["id", "size", "x", "y"]
+        with open(filename, "w", newline="") as csvfile:
+            writer = csv.writer(csvfile)
+            for obj in list_objs:
+                d = obj.to_dictionary()
+                writer.writerow([d[field] for field in fields])
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Return a list of instances loaded from <Class name>.csv."""
+        filename = cls.__name__ + ".csv"
+        if cls.__name__ == "Rectangle":
+            fields = ["id", "width", "height", "x", "y"]
+        else:
+            fields = ["id", "size", "x", "y"]
+        try:
+            with open(filename, "r", newline="") as csvfile:
+                reader = csv.reader(csvfile)
+                list_dicts = [
+                    {field: int(val) for field, val in zip(fields, row)}
+                    for row in reader
+                ]
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []

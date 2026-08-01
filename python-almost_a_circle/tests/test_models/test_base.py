@@ -166,5 +166,26 @@ class TestBase(unittest.TestCase):
             self.assertTrue(len(method.__doc__) > 0)
 
 
+    def test_csv_round_trip_rectangle(self):
+        """Test save/load CSV round trip for Rectangle instances."""
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        r2 = Rectangle(2, 4, 0, 0, 2)
+        Rectangle.save_to_file_csv([r1, r2])
+        result = Rectangle.load_from_file_csv()
+        self.assertEqual(str(result[0]), str(r1))
+        self.assertEqual(str(result[1]), str(r2))
+        os.remove("Rectangle.csv")
+
+    def test_csv_round_trip_square(self):
+        """Test save/load CSV round trip for Square instances."""
+        s1 = Square(5, 0, 0, 1)
+        s2 = Square(7, 9, 1, 2)
+        Square.save_to_file_csv([s1, s2])
+        result = Square.load_from_file_csv()
+        self.assertEqual(str(result[0]), str(s1))
+        self.assertEqual(str(result[1]), str(s2))
+        os.remove("Square.csv")
+
+
 if __name__ == "__main__":
     unittest.main()
