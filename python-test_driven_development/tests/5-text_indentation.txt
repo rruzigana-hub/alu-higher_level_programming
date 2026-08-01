@@ -1,0 +1,54 @@
+The ``5-text_indentation`` module
+====================================
+
+Importing the function
+------------------------
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Basic sentence with a period
+---------------------------------
+    >>> text_indentation("Hello world.")
+    Hello world.
+    <BLANKLINE>
+
+Question mark
+-----------------
+    >>> text_indentation("How are you?")
+    How are you?
+    <BLANKLINE>
+
+Colon
+--------
+    >>> text_indentation("Note: this works")
+    Note:
+    <BLANKLINE>
+    this works
+
+Multiple punctuation
+-------------------------
+    >>> text_indentation("Hi. Bye? Ok: done.")
+    Hi.
+    <BLANKLINE>
+    Bye?
+    <BLANKLINE>
+    Ok:
+    <BLANKLINE>
+    done.
+    <BLANKLINE>
+
+Non-string input
+---------------------
+    >>> text_indentation(89)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+None input
+--------------
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+Empty string
+----------------
+    >>> text_indentation("")
+    <BLANKLINE>
