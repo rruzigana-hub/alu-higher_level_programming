@@ -1,3 +1,3 @@
 #!/bin/bash
-# Follows redirects and cookies on the catch_me route until the final response
-curl -s -L -c /tmp/catch_me_cookies -b /tmp/catch_me_cookies "0.0.0.0:5000/catch_me"
+# Sends a PUT request with user_id and Origin header, following redirects
+curl -s -L -X PUT -d "user_id=98" -H "Origin: HolbertonSchool" "0.0.0.0:5000/catch_me"
